@@ -3,18 +3,16 @@
 module vga_controller(
 	input clk,
 	input [7:0] sw,
-	output reg hsync,
-	output reg vsync,
+	output hsync,
+	output vsync,
 	output [3:0] r,
 	output [3:0] g,
-	output [3:0] b,
-	output reg [9:0] hcount,
-	output reg [9:0] vcount
+	output [3:0] b
 );
 
-//    reg [9:0] hcount;
-//    reg [9:0] vcount;
-    reg disp_en;
+    reg [9:0] hcount;
+    reg [9:0] vcount;
+    wire disp_en;
     wire pixel_clk;
     wire [11:0] rgb_gated; // will be gated with disp_en
     
@@ -33,40 +31,24 @@ module vga_controller(
     assign r = disp_en ? rgb_gated[11:8] : 0;
     assign g = disp_en ? rgb_gated[7:4] : 0;
     assign b = disp_en ? rgb_gated[3:0] : 0;
+    assign hsync = hcount < 659 || hcount > 755;
+    assign vsync = vcount < 493 || vcount > 494;
+    assign disp_en = hcount < 640 && vcount < 480;
 
     initial begin
         hcount = 0;
         vcount = 0;
-        disp_en = 1;
-        hsync = 1;
-        vsync = 1;
     end
     
     always @(posedge pixel_clk) begin
-        if (vcount > 639 || hcount > 479)
-            disp_en <= 0;
-        else
-            disp_en <= 1;
-        
         // Counting logic
         hcount <= hcount + 1;
         if (hcount == 799) begin
-            vcount <= vcount + 1;
+            if (vcount == 524)
+                vcount <= 0;
+            else
+                vcount <= vcount + 1;
             hcount <= 0;
         end
-        if (vcount == 524) begin
-            vcount <= 0;
-        end
-        
-        // Sync timing logic
-        if (hcount > 658 && hcount < 755)
-            hsync <= 0;
-        else
-            hsync <= 1;
-    
-        if (vcount > 492 && vcount < 494)
-            vsync <= 0;
-        else
-            vsync <= 1;
     end
 endmodule

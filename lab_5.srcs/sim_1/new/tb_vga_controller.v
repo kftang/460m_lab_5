@@ -29,8 +29,6 @@ wire vsync;
 wire [3:0] r;
 wire [3:0] g;
 wire [3:0] b;
-wire [9:0] hcount;
-wire [9:0] vcount;
 
 vga_controller vga_controller(
     .clk(clk),
@@ -39,9 +37,7 @@ vga_controller vga_controller(
     .vsync(vsync),
     .r(r),
     .g(g),
-    .b(b),
-    .hcount(hcount),
-    .vcount(vcount)
+    .b(b)
 );
 
 always
