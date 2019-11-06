@@ -25,11 +25,13 @@ module keyboard_interface(
   input clk,
   output [6:0] seg,
   output [3:0] an,
+//  output [15:0] led
   output reg strobe
 );
 
 wire slow_clk;
-wire [7:0] disp_digs;
+//wire [7:0] disp_digs;
+reg [7:0] disp_digs;
 
 reg reset;
 wire ready;
@@ -37,11 +39,13 @@ wire [21:0] shift_reg;
 
 reg [26:0] strobe_counter;
 
-assign disp_digs = ready ? shift_reg[19:12] : disp_digs;
+//assign disp_digs = ready && shift_reg[19:12] != 0 ? shift_reg[19:12] : disp_digs;
+//assign led = {shift_reg[19:12], shift_reg[8:1]};
 
 initial begin
     reset = 0;
     strobe_counter = 0;
+//    strobe = 0;
 end
 
 clk_div clk_div(
@@ -65,16 +69,17 @@ shift_reg22 shift_reg22(
 );
 
 always @(posedge clk) begin
-    if (ready && !reset) begin
-        strobe = 1;
-        strobe_counter = strobe_counter + 1;
+    if (ready && !reset && shift_reg[8:1] == 8'hF0) begin
+        disp_digs <= shift_reg[19:12];
+        strobe <= 1;
+        strobe_counter <= strobe_counter + 1;
         if (strobe_counter == 10000000) begin
-            strobe = 0;
-            reset = 1;
-            strobe_counter = 0;
+            strobe <= 0;
+            reset <= 1;
+            strobe_counter <= 0;
         end
-    end
+    end else if (reset)
+        reset <= 0;
 end
 
 endmodule
-

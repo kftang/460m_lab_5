@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1573003434">
-  <File Type="PA-TCL" Name="keyboard_interface.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="keyboard_interface_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="keyboard_interface_reports.tcl"/>
-  <File Type="RDS-RDS" Name="keyboard_interface.vds"/>
-  <File Type="RDS-UTIL" Name="keyboard_interface_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="keyboard_interface_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="keyboard_interface.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="keyboard_interface_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="keyboard_interface_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1573015506">
+  <File Type="PA-TCL" Name="snake_game.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="snake_game_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="snake_game_reports.tcl"/>
+  <File Type="RDS-RDS" Name="snake_game.vds"/>
+  <File Type="RDS-UTIL" Name="snake_game_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="snake_game_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="snake_game.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="snake_game_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="snake_game_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/color_decoder.v">
@@ -88,9 +88,23 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/shift_reg11.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/snake_kb_interface.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="keyboard_interface"/>
+      <Option Name="TopModule" Val="snake_game"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

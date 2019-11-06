@@ -23,8 +23,8 @@ module snake_vga_controller(
     reg [9:0] vcount;
     wire disp_en;
     reg [11:0] rgb_gated; // will be gated with disp_en
-    reg [5:0] tail_row;
-    reg [4:0] tail_col;
+    reg [6:0] tail_row;
+    reg [6:0] tail_col;
 
     wire pixel_clk;
 

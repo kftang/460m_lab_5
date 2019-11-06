@@ -27,9 +27,15 @@ module kb_display_driver(
 );
 
 reg cur_seg;
-reg cur_dig;
+reg [3:0] cur_dig;
 
-hex_to_seg(
+initial begin
+    cur_seg = 0;
+    cur_dig = 0;
+    an = 0;
+end
+
+hex_to_seg hex_to_seg(
   .hex(cur_dig),
   .seg(seg)
 );
@@ -40,10 +46,10 @@ initial
 always @(posedge clk) begin
   cur_seg <= ~cur_seg;
   if (cur_seg) begin
-    an <= 4'b0111;
+    an <= 4'b1101;
     cur_dig <= hex_digs[7:4];
   end else begin
-    an <= 4'b1011;
+    an <= 4'b1110;
     cur_dig <= hex_digs[3:0];
   end
 end

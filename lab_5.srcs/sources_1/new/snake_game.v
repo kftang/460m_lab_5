@@ -8,33 +8,24 @@
 
 module snake_game(
     input clk,
-    input start,
-    input pause,
-    input escape,
-    input restart,
-    input [7:0] sw,
     input ps2_clk,
     input ps2_data,
 	output hsync,
 	output vsync,
 	output [2:0] r,
 	output [2:0] g,
-	output [2:0] b
+	output [2:0] b,
+	output strobe
 );
 
     wire up;
     wire down;
     wire left;
     wire right;
-//    wire pause;
-//    wire escape;
-//    wire restart;
-//    wire start;
-
-    assign up = sw[0];
-    assign down = sw[1];
-    assign left = sw[2];
-    assign right = sw[3];
+    wire pause;
+    wire escape;
+    wire restart;
+    wire start;
 
     reg [6:0] head_row;
     reg [6:0] head_col;
@@ -45,6 +36,21 @@ module snake_game(
     reg game_stopped; // esc
     reg [26:0] game_counter;
     reg game_clk;
+    
+    snake_kb_interface snake_kb_interface(
+        .ps2_data(ps2_data),
+        .ps2_clk(ps2_clk),
+        .clk(clk),
+        .strobe(strobe),
+        .start(start),
+        .pause(pause),
+        .escape(escape),
+        .restart(restart),
+        .up(up),
+        .down(down),
+        .left(left),
+        .right(right)
+    );
 
     snake_vga_controller snake_vga_controller(
         .clk(clk),
@@ -72,7 +78,7 @@ module snake_game(
 
     always @(posedge clk) begin
         game_counter = game_counter + 1;
-        if (game_counter[26]) begin
+        if (game_counter[23]) begin
             if (game_clk == 0) begin
                 game_clk = 1;
                 if (!game_over && !game_paused && !game_stopped) begin
