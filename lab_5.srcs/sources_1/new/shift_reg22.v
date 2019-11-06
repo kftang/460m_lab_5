@@ -22,12 +22,12 @@
 module shift_reg22(
   input clk,
   input reset,
-  input data,
+  input data_bit,
   output reg ready,
   output reg [21:0] shift_reg
 );
 
-reg [3:0] counter;
+reg [4:0] counter;
 
 initial begin
   ready = 0;
@@ -36,7 +36,7 @@ initial begin
 end
 
 always @(negedge clk) begin
-  if (counter == 11) begin
+  if (counter == 22) begin
     ready <= 1;
   end
   if (reset) begin
@@ -44,7 +44,7 @@ always @(negedge clk) begin
     ready <= 0;
     counter <= 0;
   end else begin
-    shift_reg <= {shift_reg[20:0], data};
+    shift_reg <= {data_bit, shift_reg[21:0]};
     counter <= counter + 1;
   end
 end

@@ -25,7 +25,7 @@ eval( EAInclude(ISEJScriptLib) );
 // pre-commands:
 ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log snake_game.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source snake_game.tcl -notrace" );
+         "-log keyboard_interface.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source keyboard_interface.tcl -notrace" );
 
 
 

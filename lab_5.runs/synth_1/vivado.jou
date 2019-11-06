@@ -2,11 +2,11 @@
 # Vivado v2019.1 (64-bit)
 # SW Build 2552052 on Fri May 24 14:49:42 MDT 2019
 # IP Build 2548770 on Fri May 24 18:01:18 MDT 2019
-# Start of session at: Tue Nov  5 17:53:44 2019
-# Process ID: 48032
+# Start of session at: Tue Nov  5 19:23:57 2019
+# Process ID: 49744
 # Current directory: C:/Users/Kenny/Programming/Verilog/lab_5/lab_5.runs/synth_1
-# Command line: vivado.exe -log snake_game.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source snake_game.tcl
-# Log file: C:/Users/Kenny/Programming/Verilog/lab_5/lab_5.runs/synth_1/snake_game.vds
+# Command line: vivado.exe -log keyboard_interface.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source keyboard_interface.tcl
+# Log file: C:/Users/Kenny/Programming/Verilog/lab_5/lab_5.runs/synth_1/keyboard_interface.vds
 # Journal file: C:/Users/Kenny/Programming/Verilog/lab_5/lab_5.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
-source snake_game.tcl -notrace
+source keyboard_interface.tcl -notrace
