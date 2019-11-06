@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log vga_controller.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source vga_controller.tcl
+EAStep vivado -log snake_game.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source snake_game.tcl

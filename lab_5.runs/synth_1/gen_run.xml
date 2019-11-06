@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1572561232">
-  <File Type="PA-TCL" Name="vga_controller.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="vga_controller_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="vga_controller_reports.tcl"/>
-  <File Type="RDS-RDS" Name="vga_controller.vds"/>
-  <File Type="RDS-UTIL" Name="vga_controller_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="vga_controller_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="vga_controller.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="vga_controller_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="vga_controller_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1572998021">
+  <File Type="PA-TCL" Name="snake_game.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="snake_game_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="snake_game_reports.tcl"/>
+  <File Type="RDS-RDS" Name="snake_game.vds"/>
+  <File Type="RDS-UTIL" Name="snake_game_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="snake_game_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="snake_game.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="snake_game_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="snake_game_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/color_decoder.v">
@@ -32,10 +32,58 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/shift_reg22.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/kb_display_driver.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/clk_div.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/kb_interface.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/snake_vga_controller.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/snake_game.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/game_clk_gen.v">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="vga_controller"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="snake_game"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
@@ -57,9 +105,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2019"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>
